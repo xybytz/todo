@@ -1,6 +1,6 @@
 from csv import writer
 import pandas as pd
-#Check if user wants to 
+#Check if user wants to add to list or see list
 print("Would you like to add something to your list or see the list? [y/n]")
 answer = input()
 #Add work (input) to csv file if the input is "y"
