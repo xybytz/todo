@@ -1,28 +1,25 @@
-from csv import writer
-import pandas as pd
-#Check if user wants to add to list or see list
-print("Would you like to add something to your list or see the list? [y/n]")
-answer = input()
-#Add work (input) to csv file if the input is "y"
-if answer =="y":
-    print("What do you have for work?")
-    lst = input()
-    with open('worklist.csv', 'a') as f_object:
+from os.path import exists
+lst = 'lst'
 
+def read():
+    if exists(lst):
+        with open(lst, 'r') as file:
+            lines = file.readlines()
+            print(lines)
 
-        writer_object = writer(f_object)
+def add():
+    with open(lst, 'a') as file:
+        newitem = input("Enter what you would like to add")
+        newitem = newitem + ", "
+        file.write(newitem)
 
+choice = input("Add to list [1] or see current list [2]?")
+if choice == "1":
+    add()
 
-        writer_object.writerow(lst)    
+elif choice == "2":
+    read()
 
-        f_object.close()
-#Print list if the input is "n"
-elif answer =="n":
-    #Allow unlimited fields
-    work = pd.read_csv("worklist.csv", sep='\t')
-    #Remove commas from output
-    work = work.apply(lambda x: x.str.replace(',', ''))
-    #Print the list
-    print(work)
-    
-    
+else:
+    quit()
+        
