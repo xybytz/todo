@@ -5,11 +5,11 @@ import runpy
 gui = Tk()
 
 def write():
-    runpy.run_path(path_name=r'/Users/Roshan/Desktop/python/to-do-list/todo.py')
+    runpy.run_path(path_name='todo.py')
 
 
 def read():
-    exec(open(r'/Users/Roshan/Desktop/python/to-do-list/reader.py').read())
+    exec(open(r'reader.py').read())
 
 button1 =  Button(gui, text="Write to File", command=write)
 button1.pack(side=tkinter.LEFT)
